@@ -2,7 +2,6 @@ import random
 from turtle import Turtle
 
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
-STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 10
 
 
@@ -35,7 +34,7 @@ class CarManager:
 
     def check_is_collided(self, playerObject):
         for car in self.cars:
-            if car.distance(playerObject) < 22 and ((playerObject.ycor() - 15) <= car.ycor() <= (playerObject.ycor() + 15)):
+            if car.distance(playerObject) < 22:
                 return True
 
     def increase_speed(self):
