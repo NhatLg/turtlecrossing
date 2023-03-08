@@ -6,6 +6,7 @@ from scoreboard import Scoreboard
 
 screen = Screen()
 player = Player()
+scoreboard = Scoreboard()
 car_manager = CarManager()
 
 screen.setup(width=600, height=600)
@@ -24,6 +25,11 @@ while is_game_on:
     if loop_counter % 6 == 0:
         car_manager.generate_batch_rand_car()
     car_manager.remove_passed_cars()
+
+    if player.ycor() == 280:
+        scoreboard.increment_level()
+        player.back_to_starting_position()
+
     loop_counter += 1
 
 screen.exitonclick()
