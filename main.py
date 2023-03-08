@@ -19,7 +19,7 @@ screen.onkeypress(player.up, "Up")
 is_game_on = True
 loop_counter = 0
 while is_game_on:
-    time.sleep(0.1)
+    time.sleep(car_manager.move_speed)
     screen.update()
     car_manager.move_cars()
     if loop_counter % 6 == 0:
@@ -28,8 +28,12 @@ while is_game_on:
 
     if player.ycor() == 280:
         scoreboard.increment_level()
+        car_manager.increase_speed()
         player.back_to_starting_position()
 
+    if car_manager.check_is_collided(player):
+        scoreboard.game_over()
+        is_game_on = False
     loop_counter += 1
 
 screen.exitonclick()

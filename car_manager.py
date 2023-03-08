@@ -9,6 +9,7 @@ MOVE_INCREMENT = 10
 class CarManager:
     def __init__(self):
         self.cars = []
+        self.move_speed = 0.1
         self.generate_batch_rand_car() # first batch
 
     def generate_batch_rand_car(self):
@@ -32,4 +33,11 @@ class CarManager:
             if car.xcor() < -340:
                 self.cars.remove(car)
 
+    def check_is_collided(self, playerObject):
+        for car in self.cars:
+            if car.distance(playerObject) < 22 and ((playerObject.ycor() - 15) <= car.ycor() <= (playerObject.ycor() + 15)):
+                return True
+
+    def increase_speed(self):
+        self.move_speed *= 0.9
 

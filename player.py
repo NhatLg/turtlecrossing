@@ -10,6 +10,7 @@ class Player(Turtle):
         self.penup()
         self.setheading(90)
         self.goto(STARTING_POSITION)
+
     def back_to_starting_position(self):
         self.goto(STARTING_POSITION)
 
